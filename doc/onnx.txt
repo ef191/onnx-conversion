@@ -1,0 +1,12 @@
+I need to convert yolov5s.pt into onnx format to use it with visual c++ (visual studio 2015, and opencv 4.5.0). The model is trained on python3.7.6 and torch 1.7.1.
+
+conda env list
+conda create --name a python=3.7.6
+conda env remove --name a
+pip freeze > requirements.txt
+pip download -r requirements.txt -d packages/
+
+python export.py --weights yolov5s.pt --img 640 --batch 1 --device cpu --include onnx --opset 11
+python -m onnxsim yolov5s.onnx yolov5s-simplified.onnx
+
+C:\Users\Administrator\AppData\Roaming\Ultralytics\Arial.ttf
